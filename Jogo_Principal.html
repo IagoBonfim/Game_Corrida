@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Corrida Maluca</title>
+    <script src="scripts/animacao.js"></script>
+    <script src="scripts/jogador.js"></script>
+    <script src="scripts/spritesheet.js"></script>
+    <script src="scripts/teclado.js"></script>
+    <script src="scripts/buraco.js"></script>
+    <script src="scripts/colisor.js"></script>
+    <script src="scripts/fundo.js"></script>
+</head>
+<body>
+    <canvas id="canvas_tela" width="500" height="500"></canvas>
+    <script>
+         let canvas = document.getElementById('canvas_tela');
+         let context = canvas.getContext('2d');
+        
+        let imagens, animacao, teclado, colisor, nave,
+            criadorInimidos;
+        let totalImagens= 0, carregadas =0;
+        
+        carregarImagens();
+        function carregarImagens(){
+            imagens = {
+                ceu: 'img/ceu.png',
+                montanhas: 'img/montanhas.png',
+                pista: 'img/pista.png',
+                jogagor: 'img/jogador-spritesheet.png',
+                buraco: 'img/buraco.png'
+            };
+            for (var i in imagens){
+                let img = new Image();
+                img.src = '' + imagens[i];
+                img.onload = carregando;
+                totalImagens++;
+                imagens[i] = img;
+            }
+        }
+         function carregando(){
+            carregadas++;
+            if(carregadas == totalImagens){
+                iniciar();
+            }
+        }
+       
+        function iniciar(){
+            animacao = new Animacao(context);
+            teclado = new Teclado(document);
+            colisor = new Colisor();
+            ceu = new Fundo(context, imagens.ceu);
+            montanhas = new Fundo(context, imagens.montanhas);
+            pista = new Fundo(context, imagens.pista);
+            jogador = new Jogador(context, teclado, imagens.jogador);
+            
+            animacao.novoSprite(ceu);
+            animacao.novoSprite(montanhas);
+            animacao.novoSprite(pista);
+            animacao.novoSprite(jogador);
+            
+            colisor.novoSprite(jogador);
+            animacao.novoProcessamento(jogador);
+           
+            configuracoesIniciais();
+        }
+        function configuracoesIniciais(){
+            ceu.velocidade = 3;
+            montanhas.velocidade = 5;
+            pista.velocidade = 10;
+            
+            jogador.x = canvas.height / 2  - imagens.jogador.height / 2;
+            jogador.y = canvas.width - imagens.jogador.width;
+            jogador.velocidade = 5;
+            animacao.ligar()
+        }
+    </script>
+</body>
+</html>
