@@ -14,11 +14,11 @@ Fundo.prototype = {
     desenhar: function(){
         
         let img = this.imagem;
-        let posicaoY = this.posicaoEmenda - img.height;
-        this.context.drawImage(img, 0, posicaoY, img.width, img.height);
+        let posicaoX = this.posicaoEmenda - img.width;
+        this.context.drawImage(img, posicaoX, 0, img.width, img.height);
         
-        posicaoY = this.posicaoEmenda;
-        this.context.drawImage(img, 0, posicaoY, img.width, img.height);
+        posicaoX = this.posicaoEmenda;
+        this.context.drawImage(img, posicaoX, 0, img.width, img.height);
         
     }
 }

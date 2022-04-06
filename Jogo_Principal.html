@@ -13,11 +13,11 @@
 <body>
     <canvas id="canvas_tela" width="500" height="500"></canvas>
     <script>
-         let canvas = document.getElementById('canvas_tela');
-         let context = canvas.getContext('2d');
+        let canvas = document.getElementById('canvas_tela');
+        let context = canvas.getContext('2d');
         
-        let imagens, animacao, teclado, colisor, nave,
-            criadorInimidos;
+        let imagens, animacao, teclado, colisor, jogador,
+            criadorInimigos;
         let totalImagens= 0, carregadas =0;
         
         carregarImagens();
@@ -67,11 +67,10 @@
             ceu.velocidade = 3;
             montanhas.velocidade = 5;
             pista.velocidade = 10;
+            jogador.velocidade = 5;
+            jogador.posicionar();
             
-           /* jogador.x = canvas.width / 4  - imagens.jogador.width / 4;
-            jogador.y = canvas.height - imagens.jogador.width;
-            jogador.velocidade = 5;*/
-            animacao.ligar()
+            animacao.ligar();
         }
     </script>
 </body>

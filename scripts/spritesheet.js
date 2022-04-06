@@ -14,30 +14,26 @@ Spritesheet.prototype = {
         if(!this.ultimoTempo) this.ultimoTempo = agora;
         if(agora - this.ultimoTempo < this.intervalo) return;
             
-        if(this.coluna < this.numColuna -1)
+        if(this.coluna < this.numColunas -1)
             this.coluna ++;
         else
             this.coluna = 0;
+            if(this.fimDoCiclo) this.fimDoCiclo();
             this.ultimoTempo = agora;
-        if(this.fimDoCiclo) this.fimDoCiclo();
-            
-            
     },
-    
     desenhar: function(x,y){
-        let larguraQuadro = this.imagem.width / this.numLinhas;
-        let alturaQuadro = this.imagem.height / this.numColunas;
-        console.log([this.numColunas, this.numLinhas]);
+        let largura = this.imagem.width / this.numColunas;
+        let altura = this.imagem.height / this.numLinhas;
         this.context.drawImage(
             this.imagem,
-            larguraQuadro * this.coluna,
-            alturaQuadro * this.linha,
-            alturaQuadro,
-            larguraQuadro,
+            largura * this.coluna,
+            altura * this.linha,
+            altura,
+            largura,
             x,
             y,
-            larguraQuadro,
-            alturaQuadro
+            largura,
+            altura
         );
     }
 }
