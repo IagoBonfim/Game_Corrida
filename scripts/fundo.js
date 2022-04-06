@@ -8,7 +8,7 @@ Fundo.prototype = {
     atualizar: function(){
         this.posicaoEmenda +=
             this.velocidade * animacao.decorrido / 1000;
-        if(this.posicaoEmenda > this.imagem.height)
+        if(this.posicaoEmenda > this.imagem.width)
             this.posicaoEmenda = 0;
     },
     desenhar: function(){

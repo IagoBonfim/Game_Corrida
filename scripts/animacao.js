@@ -14,14 +14,15 @@ Animacao.prototype = {
     },
     ligar: function(){
         this.ligado = true;
-        this.proximoFrame();
+        this.proximoQuadro();
     },
     desligar: function(){
         this.ligado = false;
     },
-    proximoFrame: function(){
+    proximoQuadro: function(){
         if (! this.ligado) return;
         let agora = new Date().getTime();
+
         if(this.ultimoCiclo == 0) this.ultimoCiclo = agora;
             this.decorrido = agora - this.ultimoCiclo;
         
@@ -30,7 +31,15 @@ Animacao.prototype = {
         }
         for(var i in this.sprites){
             this.sprites[i].desenhar();
-        }    
+        } 
+        for(var i in this.processamentos)
+            this.processamentos[i].processar();
+        this.processarExclusoes();
+        this.ultimoCiclo = agora;
+        let animacao = this;
+        requestAnimationFrame(function(){
+            animacao.proximoQuadro();
+        });       
     },
    limparTela: function(){
         let ctx = this.context;

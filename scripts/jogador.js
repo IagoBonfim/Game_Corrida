@@ -12,13 +12,13 @@ function Jogador(context, teclado, imagem){
 }
 Jogador.prototype = {
     atualizar: function(){
-        let incremento = this.velocidade * this.animacao.decorrido / 1000;
+        let incremento = this.velocidade * animacao.decorrido / 1000;
        if(this.teclado.pressionada(SETA_ESQUERDA) && this.x > 0)
            this.x -= incremento;
         if(this.teclado.pressionada(SETA_DIREITA) && 
             this.x < this.context.canvas.width - 20)
             this.x += incremento;
-        if(this.teclado.pressionada(SETA_ACIMA) && this.y > 0)
+        if(this.teclado.pressionada(SETA_ACIMA) && this.y > 0 || this.context.canvas.height > 220)
             this.y -= incremento;
         if(this.teclado.pressionada(SETA_ABAIXO) && 
           this.y < this.context.canvas.height)

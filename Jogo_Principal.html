@@ -52,23 +52,28 @@
             montanhas = new Fundo(context, imagens.montanhas);
             pista = new Fundo(context, imagens.pista);
             jogador = new Jogador(context, teclado, imagens.jogador);
+            buraco = new Buraco(context, imagens.buraco);
+
             
+
             animacao.novoSprite(ceu);
             animacao.novoSprite(montanhas);
             animacao.novoSprite(pista);
-            animacao.novoSprite(jogador);
+            /*animacao.novoSprite(jogador);
             
-            colisor.novoSprite(jogador);
+           colisor.novoSprite(jogador);
             animacao.novoProcessamento(jogador);
-           
+           */
+            animacao.novoSprite(buraco);
+            colisor.novoSprite(buraco);
             configuracoesIniciais();
         }
         function configuracoesIniciais(){
-            ceu.velocidade = 3;
-            montanhas.velocidade = 5;
-            pista.velocidade = 10;
-            jogador.velocidade = 5;
-            jogador.posicionar();
+            ceu.velocidade = 10;
+            montanhas.velocidade = 25;
+            pista.velocidade = 150;
+            /*jogador.velocidade = 5;
+            jogador.posicionar();*/
             
             animacao.ligar();
         }
