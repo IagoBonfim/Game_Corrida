@@ -17,19 +17,20 @@ Animacao.prototype = {
         this.proximoFrame();
     },
     desligar: function(){
-        this.ligado =false;
+        this.ligado = false;
     },
     proximoFrame: function(){
         if (! this.ligado) return;
-        this.limparTela();
+        let agora = new Date().getTime();
+        if(this.ultimoCiclo == 0) this.ultimoCiclo = agora;
+            this.decorrido = agora - this.ultimoCiclo;
         
         for(var i in this.sprites){
             this.sprites[i].atualizar();
         }
         for(var i in this.sprites){
             this.sprites[i].desenhar();
-        }
-            
+        }    
     },
    limparTela: function(){
         let ctx = this.context;

@@ -7,7 +7,6 @@ function Spritesheet(context, imagem, linhas, colunas){
     this.linha = 0;
     this.coluna = 0;
     this.fimDoCiclo = null;
-    
 }
 Spritesheet.prototype = {
     proximoQuadro: function(){
@@ -24,10 +23,11 @@ Spritesheet.prototype = {
             
             
     },
+    
     desenhar: function(x,y){
-        let larguraQuadro = this.imagem.width / this.numColunas;
-        let alturaQuadro = this.imagem.height / this.numLinhas;
-        
+        let larguraQuadro = this.imagem.width / this.numLinhas;
+        let alturaQuadro = this.imagem.height / this.numColunas;
+        console.log([this.numColunas, this.numLinhas]);
         this.context.drawImage(
             this.imagem,
             larguraQuadro * this.coluna,

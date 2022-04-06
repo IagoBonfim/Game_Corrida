@@ -6,13 +6,13 @@ function Jogador(context, teclado, imagem){
     this.x = 0;
     this.y = 0; 
     this.velocidade = 0;
-    this.spritesheet = new Spritesheet(context, imagem, 3, 2);
+    this.spritesheet = new Spritesheet(context, imagem, 1, 4);
     this.spritesheet.linha = 0;
     
 }
 Jogador.prototype = {
     atualizar: function(){
-       if(this.teclado.presionada(SETA_ESQUERDA) && this.x > 0)
+       if(this.teclado.pressionada(SETA_ESQUERDA) && this.x > 0)
            this.x -= 10;
         if(this.teclado.pressionada(SETA_DIREITA) && 
             this.x < this.context.canvas.width - 20)
