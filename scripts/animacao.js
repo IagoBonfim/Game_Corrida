@@ -11,8 +11,10 @@ function Animacao(context){
 Animacao.prototype = {
     novoSprite: function(sprite){
         this.sprites.push(sprite);
+        sprite.animacao = this;
     },
     ligar: function(){
+        this.ultimoCiclo = 0;
         this.ligado = true;
         this.proximoQuadro();
     },
@@ -40,10 +42,7 @@ Animacao.prototype = {
         requestAnimationFrame(function(){
             animacao.proximoQuadro();
         });       
-    },
-   limparTela: function(){
-        let ctx = this.context;
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    
     },
     novoProcessamento: function(processamento){
         this.processamentos.push(processamento);

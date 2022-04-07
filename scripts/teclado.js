@@ -13,14 +13,14 @@ function Teclado(elemento){
     elemento.addEventListener('keydown', function(evento){
         let tecla = evento.keyCode;
         teclado.pressionadas[tecla] = true;
-            if(teclado.funcoesDisparo[tecla] && ! teclado.disparadas[tecla]){
+            if(teclado.funcoesDisparo[tecla] && !teclado.disparadas[tecla]){
                 teclado.disparadas[tecla] = true;
-                teclado.funcoesDisparo[tecla]();
+                teclado.funcoesDisparo[tecla] ();
             }
     });
     elemento.addEventListener('keyup', function(evento){
-        teclado.pressionadas[evento.keycode] = false;
-        teclado.disparadas[evento.keycode] = false;
+        teclado.pressionadas[evento.keyCode] = false;
+        teclado.disparadas[evento.keyCode] = false;
     });
 }
 Teclado.prototype = {

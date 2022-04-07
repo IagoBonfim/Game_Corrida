@@ -16,12 +16,13 @@ Spritesheet.prototype = {
             
         if(this.coluna < this.numColunas -1)
             this.coluna ++;
-        else
+        else{
             this.coluna = 0;
             if(this.fimDoCiclo) this.fimDoCiclo();
-            this.ultimoTempo = agora;
+        }    
+         this.ultimoTempo = agora;
     },
-    desenhar: function(x,y){
+    desenhar: function(x, y){
         let largura = this.imagem.width / this.numColunas;
         let altura = this.imagem.height;
         this.context.drawImage(

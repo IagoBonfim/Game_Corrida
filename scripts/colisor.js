@@ -62,7 +62,7 @@ Colisor.prototype = {
             }
         return str;
     },
-    excluirSprite: function(){
+    excluirSprite: function(sprite){
         this.spritesExcluir.push(sprite);
     },
     processarExclusoes: function(){

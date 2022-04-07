@@ -26,7 +26,7 @@
                 ceu: 'img/ceu.png',
                 montanhas: 'img/montanhas.png',
                 pista: 'img/pista.png',
-                jogagor: 'img/jogador-spritesheet.png',
+                jogador: 'img/jogador-spritesheet.png',
                 buraco: 'img/buraco.png'
             };
             for (var i in imagens){
@@ -54,16 +54,14 @@
             jogador = new Jogador(context, teclado, imagens.jogador);
             buraco = new Buraco(context, imagens.buraco);
 
-            
-
             animacao.novoSprite(ceu);
             animacao.novoSprite(montanhas);
             animacao.novoSprite(pista);
-            /*animacao.novoSprite(jogador);
+            animacao.novoSprite(jogador);
             
            colisor.novoSprite(jogador);
-            animacao.novoProcessamento(jogador);
-           */
+            animacao.novoProcessamento(colisor);
+           
             animacao.novoSprite(buraco);
             colisor.novoSprite(buraco);
             configuracoesIniciais();
@@ -72,8 +70,8 @@
             ceu.velocidade = 10;
             montanhas.velocidade = 25;
             pista.velocidade = 150;
-            /*jogador.velocidade = 5;
-            jogador.posicionar();*/
+            jogador.velocidade = 55;
+            jogador.posicionar();
             
             animacao.ligar();
         }
